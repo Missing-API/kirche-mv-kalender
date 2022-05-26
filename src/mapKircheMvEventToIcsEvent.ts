@@ -53,6 +53,11 @@ export const mapKircheMvEventToIcsEvent = (
     endDate.getMinutes(),
   ];
 
+  // fix organizer name
+  let optimizedOrganizerName = input.organizer || organizerName;
+  optimizedOrganizerName = optimizedOrganizerName.replaceAll(",", " ");
+  optimizedOrganizerName = optimizedOrganizerName.trim();
+
   const icsEvent: TIcsEventWrite = {
     uid: organizerEventIdPrefix + input.uid,
     location: optimisedLocation,
@@ -67,7 +72,7 @@ export const mapKircheMvEventToIcsEvent = (
     // class: input.class || "PUBLIC",
     method: input.method || "PUBLISH",
     organizer: {
-      name: input?.organizer?.trim() || organizerName,
+      name: optimizedOrganizerName,
       email: organizerEmail,
     },
     categories: [category],
