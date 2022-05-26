@@ -54,7 +54,7 @@ export const mapKircheMvEventToIcsEvent = (
   ];
 
   // fix organizer name
-  let optimizedOrganizerName = input.organizer;
+  let optimizedOrganizerName = input.organizer || organizerName;
   optimizedOrganizerName = optimizedOrganizerName.replaceAll(",", " ");
   optimizedOrganizerName = optimizedOrganizerName.trim();
 
@@ -72,7 +72,7 @@ export const mapKircheMvEventToIcsEvent = (
     // class: input.class || "PUBLIC",
     method: input.method || "PUBLISH",
     organizer: {
-      name: optimizedOrganizerName || organizerName,
+      name: optimizedOrganizerName,
       email: organizerEmail,
     },
     categories: [category],
