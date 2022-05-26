@@ -1,0 +1,31 @@
+{
+  "name": "kirche-mv",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "axios": "^0.27.2",
+    "cheerio": "^1.0.0-rc.11",
+    "ics": "^2.35.0",
+    "next": "12.1.6",
+    "next-swagger-doc": "^0.3.4",
+    "node-ical": "^0.15.1",
+    "react": "18.1.0",
+    "react-dom": "18.1.0",
+    "swagger-ui-react": "^4.1.8"
+  },
+  "devDependencies": {
+    "@types/node": "17.0.35",
+    "@types/react": "18.0.9",
+    "@types/react-dom": "18.0.5",
+    "@types/swagger-ui-react": "^4.1.1",
+    "eslint": "8.16.0",
+    "eslint-config-next": "12.1.6",
+    "typescript": "4.7.2"
+  }
+}

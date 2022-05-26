@@ -69,7 +69,7 @@ Selektor:
 
 - LOCATION: " \* " mit ", " erstezen, um eine gängige Adresszeile zu erhalten
 - URL: korrekt per ICS setzen oder weglassen, die URL in der Description mit einer Leerzeile Abstand ergänzen
-- CATEGORIES: ergänzen anhand des o.g. Mappings
+- CATEGORIES: ergänzen anhand des o.g. Mappings, mit "#" in die Description schreiben
 - GEO: entweder für Google Kalender lesbar setzen oder weglassen
 - ORGANIZER: ICS-kompatibel setzen
 
@@ -78,3 +78,13 @@ Selektor:
 Der Datenzugriff auf diese Middleware erfolgt per HTTP / REST.
 
 TODO: Swagger Doku Link einfügen
+
+## Development
+
+First, run the development server:
+
+```bash
+yarn dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
