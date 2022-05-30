@@ -1,4 +1,3 @@
-import { url } from "inspector";
 import {
   organizerBaseUrl,
   organizerEmail,
@@ -6,20 +5,19 @@ import {
   organizerName,
 } from "./constants";
 import { TIcsEvent, TIcsEventWrite } from "./event";
+import { cleanString } from "./utils/cleanString";
+import { fixMissingSpaces } from "./utils/fixMissingSpaces";
 
 export const mapKircheMvEventToIcsEvent = (
   input: TIcsEvent,
   category: string
 ): TIcsEventWrite => {
   // reformat summary
-  let optimizedSummary: string = input.summary;
-  optimizedSummary = optimizedSummary.trim();
-  optimizedSummary = optimizedSummary.replaceAll("  ", " ");
+  let optimizedSummary: string = cleanString(input.summary);
+  optimizedSummary = fixMissingSpaces(optimizedSummary);
 
   // refrormate description text
-  let optimizedDescription: string = input.description;
-  optimizedDescription = optimizedDescription.replace(/\n/g, " ");
-  optimizedDescription = optimizedDescription.replaceAll("  ", " ");
+  let optimizedDescription: string = cleanString(input.description);
   if (input.url)
     optimizedDescription += `\n\nLink: ${input.url.trim()} #${category}`;
   optimizedDescription = optimizedDescription.trim();

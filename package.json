@@ -7,9 +7,12 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "jest --reporters=default --reporters=jest-junit --maxWorkers=25%",
+    "test:watch": "jest --watch --maxWorkers=25%"
   },
   "dependencies": {
+    "@types/jest": "^27.5.1",
     "axios": "^0.27.2",
     "cheerio": "^1.0.0-rc.11",
     "ics": "^2.35.0",
@@ -27,6 +30,24 @@
     "@types/swagger-ui-react": "^4.1.1",
     "eslint": "8.16.0",
     "eslint-config-next": "12.1.6",
+    "jest": "^28.1.0",
+    "jest-junit": "^13.2.0",
+    "ts-jest": "^28.0.3",
     "typescript": "4.7.2"
+  },
+  "jest": {
+    "globals": {
+      "ts-jest": {
+        "tsconfig": "./tsconfig.test.json"
+      }
+    },
+    "preset": "ts-jest",
+    "testEnvironment": "node"
+  },
+  "jest-junit": {
+    "suiteName": "WeAreDevelopers2022 jest-junit",
+    "outputDirectory": "./reports/",
+    "outputName": "jest-junit.xml",
+    "uniqueOutputName": "false"
   }
 }
