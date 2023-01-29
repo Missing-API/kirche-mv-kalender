@@ -91,7 +91,7 @@ export default async function handler(
   const events: object[] = await getEventsFromIcsUrl(icsUrl);
 
   const mappedEvents: TIcsEventWrite[] = events.map((event: any) => {
-    return mapKircheMvEventToIcsEvent(event, currentCategory.name);
+    return mapKircheMvEventToIcsEvent(event, currentCategory);
   });
 
   // create ics format

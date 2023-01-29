@@ -12,6 +12,7 @@
     "test:watch": "jest --watch --maxWorkers=25%"
   },
   "dependencies": {
+    "@schafevormfenster/data-text-mapper": "^0.1.0",
     "@types/jest": "^27.5.1",
     "axios": "^0.27.2",
     "cheerio": "^1.0.0-rc.11",
