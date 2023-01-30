@@ -97,16 +97,17 @@ export default async function handler(
   // create ics format
   const icsBody = ics.createEvents(mappedEvents);
 
-  console.debug(`icsBody: ${icsBody}`);
-
-  // console.debug(mappedEvents);
-  // res.status(200).json({
-  //   status: 200,
-  //   events: mappedEvents,
-  // });
-
   res.setHeader("Content-Type", "application/calendar; charset=utf8");
   // res.setHeader("Content-Type", "text/plain; charset=utf8");
-  res.setHeader("Cache-Control", "s-maxage=86400, stale-while-revalidate");
+
+  // add cache header to allow cdn caching of responses
+  const cacheMaxAge: string = process.env.CACHE_MAX_AGE || "86400"; // 1 day
+  const cacheStaleWhileRevalidate: string =
+    process.env.CACHE_STALE_WHILE_REVALIDATE || "120"; // 2 minutes
+  res.setHeader(
+    "Cache-Control",
+    `max-age=${cacheMaxAge}, s-maxage=${cacheMaxAge}, stale-while-revalidate=${cacheStaleWhileRevalidate}`
+  );
+
   res.status(200).send(icsBody.value);
 }

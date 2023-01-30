@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="WeAreDevelopers2022 jest-junit" tests="4" failures="0" errors="0" time="2.428">
-  <testsuite name="should clean up a string" errors="0" failures="0" skipped="0" timestamp="2023-01-29T13:27:18" time="2.333" tests="4">
-    <testcase classname="should clean up a string spaces" name="should clean up a string spaces" time="0.002">
-    </testcase>
-    <testcase classname="should clean up a string trim" name="should clean up a string trim" time="0">
-    </testcase>
-    <testcase classname="should clean up a string tabs" name="should clean up a string tabs" time="0">
-    </testcase>
-    <testcase classname="should clean up a string line breaks" name="should clean up a string line breaks" time="0">
+<testsuites name="WeAreDevelopers2022 jest-junit" tests="1" failures="0" errors="0" time="2.306">
+  <testsuite name="should create a number array for ics date" errors="0" failures="0" skipped="0" timestamp="2023-01-30T06:29:32" time="2.241" tests="1">
+    <testcase classname="should create a number array for ics date date to number array" name="should create a number array for ics date date to number array" time="0.026">
     </testcase>
   </testsuite>
 </testsuites>

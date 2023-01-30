@@ -1,6 +1,6 @@
 import {
   cleanSpaces,
-  dataToHtml,
+  dataToText,
   TextWithData,
 } from "@schafevormfenster/data-text-mapper/dist";
 import { ICategory } from "./categories";
@@ -12,7 +12,9 @@ import {
 } from "./constants";
 import { TIcsEvent, TIcsEventWrite } from "./event";
 import { cleanString } from "./utils/cleanString";
+import { fixLocationString } from "./utils/fixLocationString";
 import { fixMissingSpaces } from "./utils/fixMissingSpaces";
+import { getIcsDate } from "./utils/getIcsDate";
 
 export const mapKircheMvEventToIcsEvent = (
   input: TIcsEvent,
@@ -24,53 +26,31 @@ export const mapKircheMvEventToIcsEvent = (
 
   // build rich description
   const textWithData: TextWithData = {
-    description: cleanString(cleanSpaces(input.summary)),
+    description: fixMissingSpaces(cleanString(cleanSpaces(input.summary))),
     url: input?.url?.trim(),
-    tags: [category.name],
+    tags: ["Kirche", category.name],
     scopes: [category.scope],
   };
-  const htmlDescription: string = dataToHtml(textWithData);
+  const optimisedDescription: string = dataToText(textWithData);
 
   // re-format address strings
   // TODO: extract to separate function with test
-  let optimisedLocation = input.location;
-  if (optimisedLocation.substring(0, 1) === "*")
-    optimisedLocation = optimisedLocation.substring(1);
-  optimisedLocation = optimisedLocation.replaceAll("\n", " ");
-  optimisedLocation = optimisedLocation.replaceAll("*", ",");
-  optimisedLocation = optimisedLocation.replaceAll("  ", " ");
-  optimisedLocation = optimisedLocation.replaceAll(" ,", ",");
-  optimisedLocation = optimisedLocation.trim();
+  let optimisedLocation = fixLocationString(input.location);
 
-  // reformat dates
-  const startDate: Date = new Date(input.start);
-  const icsStartDate = [
-    startDate.getFullYear(),
-    startDate.getMonth() + 1,
-    startDate.getDate(),
-    startDate.getHours(),
-    startDate.getMinutes(),
-  ];
-
-  const endDate: Date = new Date(input.end);
-  const icsEndDate = [
-    endDate.getFullYear(),
-    endDate.getMonth() + 1,
-    endDate.getDate(),
-    endDate.getHours(),
-    endDate.getMinutes(),
-  ];
+  // re-format dates
+  const icsStartDate: number[] = getIcsDate(input.start);
+  const icsEndDate: number[] = getIcsDate(input.end);
 
   // fix organizer name
-  let optimizedOrganizerName = input.organizer || organizerName;
-  optimizedOrganizerName = optimizedOrganizerName.replaceAll(",", " ");
-  optimizedOrganizerName = optimizedOrganizerName.trim();
+  const optimizedOrganizerName: string = (input.organizer || organizerName)
+    .replaceAll(",", " ")
+    .trim();
 
   const icsEvent: TIcsEventWrite = {
     uid: organizerEventIdPrefix + input.uid,
     location: optimisedLocation,
     title: optimizedSummary,
-    description: htmlDescription,
+    description: optimisedDescription,
     start: icsStartDate,
     startInputType: "local",
     end: icsEndDate,
@@ -83,7 +63,7 @@ export const mapKircheMvEventToIcsEvent = (
       name: optimizedOrganizerName,
       email: organizerEmail,
     },
-    categories: [category.name],
+    categories: ["Kirche", category.name],
     productId: organizerName + ": " + category,
   };
 

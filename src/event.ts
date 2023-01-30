@@ -9,7 +9,7 @@ export interface TIcsEvent {
   startInputType: "local";
   datetype?: string;
   end: any;
-  dtstampß: any;
+  dtstamp: any;
   url: string;
   geo?: { lat: any; lon: any };
   class: string;
