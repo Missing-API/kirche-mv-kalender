@@ -32,6 +32,13 @@ export const getEventsFromIcsUrl = async (
         "ORGANIZER:",
         "VERSION:",
         "PRODID:",
+        "TZID:",
+        "TZURL:",
+        "X-LIC-LOCATION:",
+        "TZOFFSETFROM:",
+        "TZOFFSETTO:",
+        "TZNAME:",
+        "RRULE:",
       ];
       const regexp = new RegExp("^(" + substrs.join("|") + ")");
       if (!regexp.test(dataLines[i])) {
