@@ -1,7 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="WeAreDevelopers2022 jest-junit" tests="1" failures="0" errors="0" time="2.306">
-  <testsuite name="should create a number array for ics date" errors="0" failures="0" skipped="0" timestamp="2023-01-30T06:29:32" time="2.241" tests="1">
-    <testcase classname="should create a number array for ics date date to number array" name="should create a number array for ics date date to number array" time="0.026">
+<testsuites name="WeAreDevelopers2022 jest-junit" tests="11" failures="0" errors="0" time="2.918">
+  <testsuite name="should create a number array for ics date" errors="0" failures="0" skipped="0" timestamp="2023-07-12T16:29:50" time="2.469" tests="1">
+    <testcase classname="should create a number array for ics date date to number array" name="should create a number array for ics date date to number array" time="0.003">
+    </testcase>
+  </testsuite>
+  <testsuite name="should clean up a location string" errors="0" failures="0" skipped="0" timestamp="2023-07-12T16:29:50" time="2.489" tests="1">
+    <testcase classname="should clean up a location string spaces" name="should clean up a location string spaces" time="0.003">
+    </testcase>
+  </testsuite>
+  <testsuite name="should clean up a string" errors="0" failures="0" skipped="0" timestamp="2023-07-12T16:29:50" time="2.514" tests="4">
+    <testcase classname="should clean up a string spaces" name="should clean up a string spaces" time="0.002">
+    </testcase>
+    <testcase classname="should clean up a string trim" name="should clean up a string trim" time="0.001">
+    </testcase>
+    <testcase classname="should clean up a string tabs" name="should clean up a string tabs" time="0.001">
+    </testcase>
+    <testcase classname="should clean up a string line breaks" name="should clean up a string line breaks" time="0">
+    </testcase>
+  </testsuite>
+  <testsuite name="should replace a lowercase/uppercase sequence with a separater" errors="0" failures="0" skipped="0" timestamp="2023-07-12T16:29:50" time="2.518" tests="5">
+    <testcase classname="should replace a lowercase/uppercase sequence with a separater positive cases" name="should replace a lowercase/uppercase sequence with a separater positive cases" time="0.002">
+    </testcase>
+    <testcase classname="should replace a lowercase/uppercase sequence with a separater Umlaute" name="should replace a lowercase/uppercase sequence with a separater Umlaute" time="0.001">
+    </testcase>
+    <testcase classname="should replace a lowercase/uppercase sequence with a separater set characters" name="should replace a lowercase/uppercase sequence with a separater set characters" time="0.001">
+    </testcase>
+    <testcase classname="should replace a lowercase/uppercase sequence with a separater non matching cases" name="should replace a lowercase/uppercase sequence with a separater non matching cases" time="0">
+    </testcase>
+    <testcase classname="should replace a lowercase/uppercase sequence with a separater edge cases" name="should replace a lowercase/uppercase sequence with a separater edge cases" time="0.001">
     </testcase>
   </testsuite>
 </testsuites>

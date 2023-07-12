@@ -1,6 +1,6 @@
 {
   "name": "kirche-mv",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Middleware zur Optimierung der Veranstaltungskalenderdaten von kirche-mv.de",
   "private": true,
   "scripts": {
@@ -10,6 +10,9 @@
     "lint": "next lint",
     "test": "jest --reporters=default --reporters=jest-junit --maxWorkers=25%",
     "test:watch": "jest --watch --maxWorkers=25%"
+  },
+  "engines": {
+    "node": "18.x"
   },
   "dependencies": {
     "@schafevormfenster/data-text-mapper": "^0.1.0",
