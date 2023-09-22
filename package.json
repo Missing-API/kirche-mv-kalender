@@ -1,6 +1,6 @@
 {
   "name": "kirche-mv",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "Middleware zur Optimierung der Veranstaltungskalenderdaten von kirche-mv.de",
   "private": true,
   "scripts": {
