@@ -28,7 +28,7 @@ export const mapKircheMvEventToIcsEvent = (
   const textWithData: TextWithData = {
     description: fixMissingSpaces(cleanString(cleanSpaces(input.summary))),
     url: input?.url?.trim(),
-    tags: ["Kirche", category.name],
+    tags: ["Kirche", ...category.name.split("/")],
     scopes: [category.scope],
   };
   const optimisedDescription: string = dataToText(textWithData);
