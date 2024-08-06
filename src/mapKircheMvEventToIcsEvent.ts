@@ -38,8 +38,16 @@ export const mapKircheMvEventToIcsEvent = (
   let optimisedLocation = fixLocationString(input.location);
 
   // re-format dates
-  const icsStartDate: number[] = getIcsDate(input.start);
-  const icsEndDate: number[] = getIcsDate(input.end);
+  let icsStartDate: number[] = getIcsDate(input.start);
+  let icsEndDate: number[] = getIcsDate(input.end);
+
+  if (new Date(input.end) < new Date(input.start)) {
+    // omg - they really messed up the dates
+    // it's for real in august 2024
+    console.warn("Start is after end! We will switch dates, but how creapy is that?");
+     icsStartDate = getIcsDate(input.end);
+     icsEndDate = getIcsDate(input.start);
+  }
 
   // fix organizer name
   const optimizedOrganizerName: string = (input.organizer || organizerName)
