@@ -4,6 +4,8 @@ import { TIcsEvent, TIcsEventWrite } from "../../src/event";
 import { getEventsFromIcsUrl } from "../../src/kircheMvClient/getEventsFromIcsUrl";
 import { getIcsUrlByCategory } from "../../src/kircheMvClient/getIcsUrlByCategory";
 import { mapKircheMvEventToIcsEvent } from "../../src/mapKircheMvEventToIcsEvent";
+import { VTIMEZONE } from "../../src/constants";
+import { fixIcsDate } from "../../src/utils/fixIcsDate";
 const ics = require("ics");
 
 /**
@@ -89,16 +91,23 @@ export default async function handler(
 
   // fetch events from kirche-mv.de
   const events: object[] = await getEventsFromIcsUrl(icsUrl);
-
   const mappedEvents: TIcsEventWrite[] = events.map((event: any) => {
     return mapKircheMvEventToIcsEvent(event, currentCategory);
   });
 
   // create ics format
-  const icsBody = ics.createEvents(mappedEvents);
+  let icsBody: string = ics.createEvents(mappedEvents).value;
+
+  // add timezone to calendar feed
+  icsBody = icsBody.replace("METHOD:PUBLISH", "METHOD:PUBLISH\n" + VTIMEZONE);
+
+  // replace all occourences matching rexExp with the result of fixIcsDate by regexp input as parameter
+  const startEndRexExp = /(DTSTART:|DTEND:)(.*)/g;
+  icsBody = icsBody.replace(startEndRexExp, function (match, capture) {
+    return fixIcsDate(match);
+  });
 
   res.setHeader("Content-Type", "application/calendar; charset=utf8");
-  // res.setHeader("Content-Type", "text/plain; charset=utf8");
 
   // add cache header to allow cdn caching of responses
   const cacheMaxAge: string = process.env.CACHE_MAX_AGE || "86400"; // 1 day
@@ -109,5 +118,5 @@ export default async function handler(
     `max-age=${cacheMaxAge}, s-maxage=${cacheMaxAge}, stale-while-revalidate=${cacheStaleWhileRevalidate}`
   );
 
-  res.status(200).send(icsBody.value);
+  res.status(200).send(icsBody);
 }
