@@ -25,9 +25,9 @@ export interface TIcsEventWrite {
   title: string;
   description: string;
   start: number[];
-  startInputType: "local";
+  startInputType: "local" | "utc";
   end: number[];
-  endInputType: "local";
+  endInputType: "local" | "utc";
   url: string;
   method: "PUBLISH";
   organizer: { name: string; email: string };
