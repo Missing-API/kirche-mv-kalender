@@ -72,7 +72,7 @@ export const mapKircheMvEventToIcsEvent = (
       email: organizerEmail,
     },
     categories: ["Kirche", ...category.name.split("/")],
-    productId: organizerName + ": " + category,
+    productId: organizerName + ": " + category.name,
   };
 
   return icsEvent;
