@@ -12,7 +12,7 @@
     "test:watch": "jest --watch --maxWorkers=25%"
   },
   "engines": {
-    "node": "18.x"
+    "node": "22.x"
   },
   "dependencies": {
     "@schafevormfenster/data-text-mapper": "^0.1.0",
