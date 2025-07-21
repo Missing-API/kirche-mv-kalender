@@ -34,3 +34,4 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 reports/jest-junit.xml
+reports/jest-junit.xml
