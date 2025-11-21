@@ -1,5 +1,6 @@
 import axios from "axios";
-import { fetchEventDetails, enrichEventsWithDetails } from "./fetchEventDetails";
+import { fetchEventDetails } from "./fetchEventDetails";
+import { enrichEventsWithDetails } from "./enrichEventsWithDetails";
 
 jest.mock("axios");
 const mockedAxios = axios as jest.Mocked<typeof axios>;
@@ -45,9 +46,8 @@ describe("fetchEventDetails", () => {
     expect(result.attachmentUrl).toBe(
       "https://www.kirche-mv.de/fileadmin/tx_cal/offener_kreis_kino.pdf"
     );
-    expect(result.description).toBe(
-      "Eine öffentliche Veranstaltung in gemütlicher Runde!"
-    );
+    // p.format_autor is outside .eventbox so should not be included
+    expect(result.description).toBeUndefined();
   });
 
   test("should parse event with long description and no image", async () => {
