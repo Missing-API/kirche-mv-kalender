@@ -24,14 +24,31 @@ export const mapKircheMvEventToIcsEvent = (
   let optimizedSummary: string = cleanString(cleanSpaces(input.summary));
   optimizedSummary = fixMissingSpaces(optimizedSummary);
 
-  // build rich description
+  // build rich description with enriched data
+  let descriptionText = fixMissingSpaces(cleanString(cleanSpaces(input.summary)));
+  
+  // Add detailed description if available
+  if (input.detailedDescription) {
+    descriptionText = input.detailedDescription;
+  }
+  
   const textWithData: TextWithData = {
-    description: fixMissingSpaces(cleanString(cleanSpaces(input.summary))),
+    description: descriptionText,
     url: input?.url?.trim(),
     tags: ["Kirche", ...category.name.split("/")],
     scopes: [category.scope],
   };
-  const optimisedDescription: string = dataToText(textWithData);
+  let optimisedDescription: string = dataToText(textWithData);
+  
+  // Append image URL to description if available
+  if (input.imageUrl) {
+    optimisedDescription += `\n\nBild: ${input.imageUrl}`;
+  }
+  
+  // Append attachment URL to description if available
+  if (input.attachmentUrl) {
+    optimisedDescription += `\n\nAnhang: ${input.attachmentUrl}`;
+  }
 
   // re-format address strings
   // TODO: extract to separate function with test
