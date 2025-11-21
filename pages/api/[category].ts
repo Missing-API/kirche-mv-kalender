@@ -91,7 +91,7 @@ export default async function handler(
   }
 
   // fetch events from kirche-mv.de
-  const events: TIcsEvent[] = await getEventsFromIcsUrl(icsUrl);
+  const events: any[] = await getEventsFromIcsUrl(icsUrl);
   
   // enrich events with detail page information
   console.log(`Enriching ${events.length} events with detail page data...`);

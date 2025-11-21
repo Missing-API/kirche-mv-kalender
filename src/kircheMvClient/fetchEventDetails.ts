@@ -80,9 +80,10 @@ export const fetchEventDetails = async (
       // Skip empty paragraphs and those with class names that indicate non-content
       const hasClassToSkip = $elem.hasClass("between_title");
       
-      // Skip if inside the CTA buttons or if the paragraph contains links to PDFs
+      // Skip if inside the CTA buttons
       const isInsideCta = $elem.closest(".cta_buttons").length > 0;
-      const hasInternalLinks = $elem.find("a").length > 0 && $elem.find("a.pdf_file_preview").length === 0;
+      
+      // Skip if paragraph only contains links (like "ansehen" / "herunterladen")
       const onlyContainsLinks = $elem.children("a").length > 0 && $elem.text().trim() === $elem.children("a").text().trim();
       
       if (text && text.length > 0 && !hasClassToSkip && !isInsideCta && !onlyContainsLinks) {
