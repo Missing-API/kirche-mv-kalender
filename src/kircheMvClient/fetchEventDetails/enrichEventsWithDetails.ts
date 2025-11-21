@@ -27,12 +27,8 @@ export const enrichEventsWithDetails = async (
       details = await fetchEventDetails(event.url);
 
       // Retry once if first attempt returned empty details (likely failed)
-      if (
-        !details.description &&
-        !details.imageUrl &&
-        !details.attachmentUrl
-      ) {
-        console.log(`Retrying event detail fetch for UID: ${event.uid}`);
+      if (Object.keys(details).length === 0) {
+        console.warn(`Retrying event detail fetch for UID: ${event.uid}`);
         details = await fetchEventDetails(event.url);
       }
 
