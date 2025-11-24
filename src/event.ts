@@ -17,6 +17,10 @@ export interface TIcsEvent {
   organizer: any;
   categories?: string[];
   productId?: string;
+  // Enriched fields from detail page
+  detailedDescription?: string;
+  imageUrl?: string;
+  attachmentUrl?: string;
 }
 
 export interface TIcsEventWrite {

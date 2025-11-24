@@ -1,12 +1,12 @@
 {
   "name": "kirche-mv",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "Middleware zur Optimierung der Veranstaltungskalenderdaten von kirche-mv.de",
   "private": true,
   "scripts": {
     "dev": "next dev -p 3060",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p 3060",
     "lint": "next lint",
     "test": "jest --reporters=default --reporters=jest-junit --maxWorkers=25%",
     "test:watch": "jest --watch --maxWorkers=25%"
@@ -17,7 +17,8 @@
   "dependencies": {
     "@schafevormfenster/data-text-mapper": "^0.1.0",
     "@types/jest": "^27.5.1",
-    "axios": "^0.27.2",
+    "axios": "^1.13.2",
+    "axios-cache-interceptor": "^1.8.3",
     "cheerio": "^1.0.0-rc.11",
     "ics": "^2.35.0",
     "next": "12.1.6",

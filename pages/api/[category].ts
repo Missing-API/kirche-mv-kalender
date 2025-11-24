@@ -3,6 +3,7 @@ import { Categories, ICategory } from "../../src/categories";
 import { TIcsEvent, TIcsEventWrite } from "../../src/event";
 import { getEventsFromIcsUrl } from "../../src/kircheMvClient/getEventsFromIcsUrl";
 import { getIcsUrlByCategory } from "../../src/kircheMvClient/getIcsUrlByCategory";
+import { enrichEventsWithDetails } from "../../src/kircheMvClient/fetchEventDetails";
 import { mapKircheMvEventToIcsEvent } from "../../src/mapKircheMvEventToIcsEvent";
 import { VTIMEZONE } from "../../src/constants";
 import { fixIcsDate } from "../../src/utils/fixIcsDate";
@@ -90,8 +91,30 @@ export default async function handler(
   }
 
   // fetch events from kirche-mv.de
-  const events: object[] = await getEventsFromIcsUrl(icsUrl);
-  const mappedEvents: TIcsEventWrite[] = events.map((event: any) => {
+  const events: any[] = await getEventsFromIcsUrl(icsUrl);
+  
+  // enrich events with detail page information
+  console.log(`Enriching ${events.length} events with detail page data...`);
+  const eventsForEnrichment = events
+    .filter((event: TIcsEvent) => event.url)
+    .sort((a: TIcsEvent, b: TIcsEvent) => a.uid.localeCompare(b.uid))
+    .map((event: TIcsEvent) => ({
+      uid: event.uid,
+      url: event.url,
+    }));
+  const enrichmentMap = await enrichEventsWithDetails(eventsForEnrichment, 5, 2000);
+  
+  // merge enriched data into events
+  events.forEach((event: TIcsEvent) => {
+    const enrichedData = enrichmentMap.get(event.uid);
+    if (enrichedData) {
+      event.detailedDescription = enrichedData.description;
+      event.imageUrl = enrichedData.imageUrl;
+      event.attachmentUrl = enrichedData.attachmentUrl;
+    }
+  });
+  
+  const mappedEvents: TIcsEventWrite[] = events.map((event: TIcsEvent) => {
     return mapKircheMvEventToIcsEvent(event, currentCategory);
   });
 
@@ -112,10 +135,14 @@ export default async function handler(
   // add cache header to allow cdn caching of responses
   const cacheMaxAge: string = process.env.CACHE_MAX_AGE || "86400"; // 1 day
   const cacheStaleWhileRevalidate: string =
-    process.env.CACHE_STALE_WHILE_REVALIDATE || "120"; // 2 minutes
+    process.env.CACHE_STALE_WHILE_REVALIDATE || "600"; // 10 minutes
   res.setHeader(
     "Cache-Control",
     `max-age=${cacheMaxAge}, s-maxage=${cacheMaxAge}, stale-while-revalidate=${cacheStaleWhileRevalidate}`
+  );
+  res.setHeader(
+    "CDN-Cache-Control",
+    `s-maxage=${cacheMaxAge}, stale-while-revalidate=${cacheStaleWhileRevalidate}`
   );
 
   res.status(200).send(icsBody);

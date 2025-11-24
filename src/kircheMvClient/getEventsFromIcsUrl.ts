@@ -1,12 +1,39 @@
 import axios from "axios";
+import { setupCache, buildMemoryStorage, AxiosCacheInstance } from "axios-cache-interceptor";
 import ical from "node-ical";
+
+const ONE_DAY = 24 * 60 * 60 * 1000;
+const TEN_MINUTES = 10 * 60 * 1000;
+
+const globalForAxios = global as unknown as { axiosIcsClient: AxiosCacheInstance | undefined };
+
+if (!globalForAxios.axiosIcsClient) {
+  console.log("Initializing global axiosIcsClient");
+  globalForAxios.axiosIcsClient = setupCache(axios.create(), {
+    storage: buildMemoryStorage(),
+    ttl: ONE_DAY,
+    staleIfError: TEN_MINUTES,
+    cachePredicate: {
+      statusCheck: (status) => status === 200,
+    },
+    headerInterpreter: () => ONE_DAY,
+  });
+}
+
+const axiosIcsClient = globalForAxios.axiosIcsClient;
 
 export const getEventsFromIcsUrl = async (
   icsUrl: string
 ): Promise<object[] | any> => {
   // query kirche-mv.de
   try {
-    const { data } = await axios.get<any>(icsUrl.toString());
+    const response = await axiosIcsClient.get<any>(icsUrl.toString());
+
+    if (response.status !== 200) {
+      console.warn(`Unexpected ICS status ${response.status}`);
+      return [];
+    }
+    const data = response.data;
 
     var dataLines: string[] = data.split("\n");
     var newDataLines: string[] = [];
@@ -85,12 +112,10 @@ export const getEventsFromIcsUrl = async (
     return eventsArray;
   } catch (error) {
     if (axios.isAxiosError(error)) {
-      console.log("error message: ", error.message);
-      // 👇️ error: AxiosError<any, any>
-      return error.message;
+      console.warn("error message: ", error.message);
     } else {
-      console.log("unexpected error: ", error);
-      return "An unexpected error occurred";
+      console.warn("unexpected error: ", error);
     }
+    return [];
   }
 };
