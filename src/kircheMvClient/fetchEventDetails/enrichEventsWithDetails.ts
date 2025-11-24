@@ -10,8 +10,8 @@ import { fetchEventDetails } from "./fetchEventDetails";
  */
 export const enrichEventsWithDetails = async (
   events: Array<{ uid: string; url: string }>,
-  maxConcurrent: number = 5,
-  delayMs: number = 2000
+  maxConcurrent: number = 10,
+  delayMs: number = 1000
 ): Promise<Map<string, EventDetails>> => {
   const resultsMap = new Map<string, EventDetails>();
 
@@ -26,8 +26,11 @@ export const enrichEventsWithDetails = async (
       // First attempt
       details = await fetchEventDetails(event.url);
 
-      // Retry once if first attempt returned empty details (likely failed)
-      if (Object.keys(details).length === 0) {
+      // Check if we have actual content (ignoring fromCache flag)
+      const hasContent = Object.keys(details).some((k) => k !== "fromCache");
+
+      // Retry once if no content and not from cache (likely failed network/parsing on fresh fetch)
+      if (!hasContent && !details.fromCache) {
         console.warn(`Retrying event detail fetch for UID: ${event.uid}`);
         details = await fetchEventDetails(event.url);
       }
@@ -46,8 +49,16 @@ export const enrichEventsWithDetails = async (
       }
     });
 
-    // Add delay between batches (except after the last batch)
-    if (i + maxConcurrent < events.length) {
+    // Check if any request in the batch hit the network
+    const anyNetworkHit = results.some((result) => {
+      if (result.status === "fulfilled") {
+        return !result.value.details.fromCache;
+      }
+      return true; // Failed requests count as network hits
+    });
+
+    // Add delay between batches (except after the last batch) only if we hit the network
+    if (i + maxConcurrent < events.length && anyNetworkHit) {
       await new Promise((resolve) => setTimeout(resolve, delayMs));
     }
   }

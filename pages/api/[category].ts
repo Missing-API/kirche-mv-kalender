@@ -97,11 +97,12 @@ export default async function handler(
   console.log(`Enriching ${events.length} events with detail page data...`);
   const eventsForEnrichment = events
     .filter((event: TIcsEvent) => event.url)
+    .sort((a: TIcsEvent, b: TIcsEvent) => a.uid.localeCompare(b.uid))
     .map((event: TIcsEvent) => ({
       uid: event.uid,
       url: event.url,
     }));
-  const enrichmentMap = await enrichEventsWithDetails(eventsForEnrichment);
+  const enrichmentMap = await enrichEventsWithDetails(eventsForEnrichment, 5, 2000);
   
   // merge enriched data into events
   events.forEach((event: TIcsEvent) => {
@@ -134,10 +135,14 @@ export default async function handler(
   // add cache header to allow cdn caching of responses
   const cacheMaxAge: string = process.env.CACHE_MAX_AGE || "86400"; // 1 day
   const cacheStaleWhileRevalidate: string =
-    process.env.CACHE_STALE_WHILE_REVALIDATE || "120"; // 2 minutes
+    process.env.CACHE_STALE_WHILE_REVALIDATE || "600"; // 10 minutes
   res.setHeader(
     "Cache-Control",
     `max-age=${cacheMaxAge}, s-maxage=${cacheMaxAge}, stale-while-revalidate=${cacheStaleWhileRevalidate}`
+  );
+  res.setHeader(
+    "CDN-Cache-Control",
+    `s-maxage=${cacheMaxAge}, stale-while-revalidate=${cacheStaleWhileRevalidate}`
   );
 
   res.status(200).send(icsBody);

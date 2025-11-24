@@ -1,6 +1,27 @@
 import axios from "axios";
+import { setupCache, buildMemoryStorage, AxiosCacheInstance } from "axios-cache-interceptor";
 import * as cheerio from "cheerio";
 import { EventDetails } from "./types";
+
+const ONE_WEEK = 7 * 24 * 60 * 60 * 1000;
+const TEN_MINUTES = 10 * 60 * 1000;
+
+const globalForAxios = global as unknown as { axiosDetailClient: AxiosCacheInstance | undefined };
+
+if (!globalForAxios.axiosDetailClient) {
+  console.log("Initializing global axiosDetailClient");
+  globalForAxios.axiosDetailClient = setupCache(axios.create(), {
+    storage: buildMemoryStorage(),
+    ttl: ONE_WEEK,
+    staleIfError: TEN_MINUTES,
+    cachePredicate: {
+      statusCheck: (status) => status === 200,
+    },
+    headerInterpreter: () => ONE_WEEK,
+  });
+}
+
+const axiosDetailClient = globalForAxios.axiosDetailClient;
 
 /**
  * Fetches and parses event detail page from kirche-mv.de
@@ -12,16 +33,27 @@ export const fetchEventDetails = async (
   detailUrl: string,
   timeout: number = 20000
 ): Promise<EventDetails> => {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), timeout);
   try {
-    const { data } = await axios.get<string>(detailUrl, {
+    const response = await axiosDetailClient.get<string>(detailUrl, {
       timeout,
+      signal: controller.signal,
       headers: {
         "User-Agent": "kirche-mv-kalender-middleware/1.0",
       },
     });
 
+    console.debug(
+      `fetchEventDetails ${detailUrl} cache=${response.cached ? "hit" : "miss"}`
+    );
+
+    const data = response.data;
+
     const $ = cheerio.load(data);
-    const details: EventDetails = {};
+    const details: EventDetails = {
+      fromCache: !!response.cached,
+    };
 
     // Extract image URL from eventbox > figure > picture > img
     const imageElement = $(".eventbox figure.figure_right picture img");
@@ -92,7 +124,8 @@ export const fetchEventDetails = async (
     } else {
       console.warn(`Unexpected error fetching event details: ${error}`);
     }
-    // Return empty details on error - enrichment is optional
     return {};
+  } finally {
+    clearTimeout(timer);
   }
 };

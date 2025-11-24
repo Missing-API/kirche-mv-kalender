@@ -1,6 +1,27 @@
 import axios from "axios";
+import { setupCache, buildMemoryStorage, AxiosCacheInstance } from "axios-cache-interceptor";
 import { organizerBaseUrl } from "../constants";
 const cheerio = require("cheerio");
+
+const ONE_DAY = 24 * 60 * 60 * 1000;
+const TEN_MINUTES = 10 * 60 * 1000;
+
+const globalForAxios = global as unknown as { axiosEventPageClient: AxiosCacheInstance | undefined };
+
+if (!globalForAxios.axiosEventPageClient) {
+  console.log("Initializing global axiosEventPageClient");
+  globalForAxios.axiosEventPageClient = setupCache(axios.create(), {
+    storage: buildMemoryStorage(),
+    ttl: ONE_DAY,
+    staleIfError: TEN_MINUTES,
+    cachePredicate: {
+      statusCheck: (status) => status === 200,
+    },
+    headerInterpreter: () => ONE_DAY,
+  });
+}
+
+const axiosEventPageClient = globalForAxios.axiosEventPageClient;
 
 export const getIcsUrlByCategory = async (categoryId: number): Promise<any> => {
   const eventPageUrl = new URL(`${organizerBaseUrl}aktuell/veranstaltungen`);
@@ -38,7 +59,7 @@ export const getIcsUrlByCategory = async (categoryId: number): Promise<any> => {
   console.debug("event page url: " + eventPageUrl.toString());
   // query kirche-mv.de
   try {
-    const { data } = await axios.get<any>(eventPageUrl.toString());
+    const { data } = await axiosEventPageClient.get<any>(eventPageUrl.toString());
     const $ = cheerio.load(data);
     const icsLink: string = $(
       ".export_dropdown a[title='Formatierte Daten zB für einen Import in einen Kalender']"
