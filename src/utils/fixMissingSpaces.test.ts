@@ -1,3 +1,4 @@
+import { describe, expect, test } from "vitest";
 import { fixMissingSpaces } from "./fixMissingSpaces";
 
 describe("should replace a lowercase/uppercase sequence with a separater", () => {

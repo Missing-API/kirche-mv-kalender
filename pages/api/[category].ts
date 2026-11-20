@@ -54,7 +54,7 @@ export default async function handler(
 ) {
   // check for incoming parameter
   const { category } = req.query;
-  if (category.includes(".ics") === false) {
+  if ((category as string).includes(".ics") === false) {
     res.status(400).json({
       status: 400,
       message: "Bad request. Please use a proper category ics filename.",

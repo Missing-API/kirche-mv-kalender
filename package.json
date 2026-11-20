@@ -7,52 +7,48 @@
     "dev": "next dev -p 3060",
     "build": "next build",
     "start": "next start -p 3060",
-    "lint": "next lint",
-    "test": "jest --reporters=default --reporters=jest-junit --maxWorkers=25%",
-    "test:watch": "jest --watch --maxWorkers=25%"
+    "lint": "eslint .",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "type-check": "next typegen && tsc --noEmit"
   },
   "engines": {
-    "node": "22.x"
+    "node": "26.x"
   },
   "dependencies": {
     "@schafevormfenster/data-text-mapper": "^0.1.0",
-    "@types/jest": "^27.5.1",
-    "axios": "^1.13.2",
-    "axios-cache-interceptor": "^1.8.3",
-    "cheerio": "^1.0.0-rc.11",
-    "ics": "^2.35.0",
-    "next": "12.1.6",
-    "next-swagger-doc": "^0.3.4",
-    "node-ical": "^0.15.1",
-    "react": "18.1.0",
-    "react-dom": "18.1.0",
-    "swagger-ui-react": "^4.1.8"
+    "axios": "^1.21.1",
+    "axios-cache-interceptor": "^1.13.0",
+    "cheerio": "^1.2.0",
+    "ics": "^3.12.1",
+    "next": "16.4.6",
+    "next-swagger-doc": "0.5.0",
+    "node-ical": "^0.27.6",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "swagger-ui-react": "5.35.1"
   },
   "devDependencies": {
-    "@types/node": "17.0.35",
-    "@types/react": "18.0.9",
-    "@types/react-dom": "18.0.5",
-    "@types/swagger-ui-react": "^4.1.1",
-    "eslint": "8.16.0",
-    "eslint-config-next": "12.1.6",
-    "jest": "^28.1.0",
-    "jest-junit": "^13.2.0",
-    "ts-jest": "^28.0.3",
-    "typescript": "4.7.2"
+    "@types/node": "26.6.6",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "@types/swagger-ui-react": "5.18.0",
+    "eslint": "10.15.0",
+    "eslint-config-next": "16.4.6",
+    "typescript": "6.0.3",
+    "vite": "8.3.8",
+    "vitest": "5.1.1"
   },
-  "jest": {
-    "globals": {
-      "ts-jest": {
-        "tsconfig": "./tsconfig.test.json"
+  "packageManager": "pnpm@10.34.9",
+  "pnpm": {
+    "peerDependencyRules": {
+      "allowedVersions": {
+        "react-inspector>react": "19",
+        "react-debounce-input>react": "19",
+        "eslint-plugin-import>eslint": "10",
+        "eslint-plugin-jsx-a11y>eslint": "10",
+        "eslint-plugin-react>eslint": "10"
       }
-    },
-    "preset": "ts-jest",
-    "testEnvironment": "node"
-  },
-  "jest-junit": {
-    "suiteName": "WeAreDevelopers2022 jest-junit",
-    "outputDirectory": "./reports/",
-    "outputName": "jest-junit.xml",
-    "uniqueOutputName": "false"
+    }
   }
 }
