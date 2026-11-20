@@ -1,3 +1,4 @@
+import { describe, expect, test } from "vitest";
 import { cleanString } from "./cleanString";
 
 describe("should clean up a string", () => {

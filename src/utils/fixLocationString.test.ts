@@ -1,3 +1,4 @@
+import { describe, expect, test } from "vitest";
 import { fixLocationString } from "./fixLocationString";
 
 describe("should clean up a location string", () => {

@@ -8,8 +8,8 @@
     "build": "next build",
     "start": "next start -p 3060",
     "lint": "eslint .",
-    "test": "jest --reporters=default --reporters=jest-junit --maxWorkers=25%",
-    "test:watch": "jest --watch --maxWorkers=25%",
+    "test": "vitest run",
+    "test:watch": "vitest",
     "type-check": "next typegen && tsc --noEmit"
   },
   "engines": {
@@ -17,7 +17,6 @@
   },
   "dependencies": {
     "@schafevormfenster/data-text-mapper": "^0.1.0",
-    "@types/jest": "^27.5.1",
     "axios": "^1.13.2",
     "axios-cache-interceptor": "^1.8.3",
     "cheerio": "^1.0.0-rc.11",
@@ -36,25 +35,9 @@
     "@types/swagger-ui-react": "5.18.0",
     "eslint": "10.15.0",
     "eslint-config-next": "16.4.6",
-    "jest": "^28.1.0",
-    "jest-junit": "^13.2.0",
-    "ts-jest": "^28.0.3",
-    "typescript": "6.0.3"
-  },
-  "jest": {
-    "globals": {
-      "ts-jest": {
-        "tsconfig": "./tsconfig.test.json"
-      }
-    },
-    "preset": "ts-jest",
-    "testEnvironment": "node"
-  },
-  "jest-junit": {
-    "suiteName": "WeAreDevelopers2022 jest-junit",
-    "outputDirectory": "./reports/",
-    "outputName": "jest-junit.xml",
-    "uniqueOutputName": "false"
+    "typescript": "6.0.3",
+    "vite": "8.3.8",
+    "vitest": "5.1.1"
   },
   "packageManager": "pnpm@10.34.9",
   "pnpm": {

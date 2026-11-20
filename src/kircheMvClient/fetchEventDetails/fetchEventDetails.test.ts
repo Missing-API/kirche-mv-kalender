@@ -1,13 +1,14 @@
+import { afterEach, describe, expect, test, vi, type Mocked } from "vitest";
 import axios from "axios";
 import { fetchEventDetails } from "./fetchEventDetails";
 import { enrichEventsWithDetails } from "./enrichEventsWithDetails";
 
-jest.mock("axios");
-const mockedAxios = axios as jest.Mocked<typeof axios>;
+vi.mock("axios");
+const mockedAxios = axios as Mocked<typeof axios>;
 
 describe("fetchEventDetails", () => {
   afterEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
   test("should parse event with image and pdf attachment", async () => {
@@ -161,7 +162,7 @@ Ev. Kirchengemeinde Kartlow-Völschow
 
 describe("enrichEventsWithDetails", () => {
   afterEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
   test("should enrich multiple events in parallel with throttling", async () => {
