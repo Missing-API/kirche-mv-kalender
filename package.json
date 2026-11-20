@@ -12,7 +12,7 @@
     "test:watch": "jest --watch --maxWorkers=25%"
   },
   "engines": {
-    "node": "22.x"
+    "node": "26.x"
   },
   "dependencies": {
     "@schafevormfenster/data-text-mapper": "^0.1.0",
@@ -29,7 +29,7 @@
     "swagger-ui-react": "^4.1.8"
   },
   "devDependencies": {
-    "@types/node": "17.0.35",
+    "@types/node": "26.6.6",
     "@types/react": "18.0.9",
     "@types/react-dom": "18.0.5",
     "@types/swagger-ui-react": "^4.1.1",
@@ -54,5 +54,6 @@
     "outputDirectory": "./reports/",
     "outputName": "jest-junit.xml",
     "uniqueOutputName": "false"
-  }
+  },
+  "packageManager": "pnpm@10.34.9"
 }
