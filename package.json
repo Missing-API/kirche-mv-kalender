@@ -7,7 +7,7 @@
     "dev": "next dev -p 3060",
     "build": "next build",
     "start": "next start -p 3060",
-    "lint": "next lint",
+    "lint": "eslint .",
     "test": "jest --reporters=default --reporters=jest-junit --maxWorkers=25%",
     "test:watch": "jest --watch --maxWorkers=25%",
     "type-check": "next typegen && tsc --noEmit"
@@ -34,8 +34,8 @@
     "@types/react": "19.3.0",
     "@types/react-dom": "19.3.0",
     "@types/swagger-ui-react": "5.18.0",
-    "eslint": "8.16.0",
-    "eslint-config-next": "12.1.6",
+    "eslint": "10.15.0",
+    "eslint-config-next": "16.4.6",
     "jest": "^28.1.0",
     "jest-junit": "^13.2.0",
     "ts-jest": "^28.0.3",
@@ -61,7 +61,10 @@
     "peerDependencyRules": {
       "allowedVersions": {
         "react-inspector>react": "19",
-        "react-debounce-input>react": "19"
+        "react-debounce-input>react": "19",
+        "eslint-plugin-import>eslint": "10",
+        "eslint-plugin-jsx-a11y>eslint": "10",
+        "eslint-plugin-react>eslint": "10"
       }
     }
   }
