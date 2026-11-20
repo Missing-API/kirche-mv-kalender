@@ -17,13 +17,13 @@
   },
   "dependencies": {
     "@schafevormfenster/data-text-mapper": "^0.1.0",
-    "axios": "^1.13.2",
-    "axios-cache-interceptor": "^1.8.3",
-    "cheerio": "^1.0.0-rc.11",
-    "ics": "^2.35.0",
+    "axios": "^1.21.1",
+    "axios-cache-interceptor": "^1.13.0",
+    "cheerio": "^1.2.0",
+    "ics": "^3.12.1",
     "next": "16.4.6",
     "next-swagger-doc": "0.5.0",
-    "node-ical": "^0.15.1",
+    "node-ical": "^0.27.6",
     "react": "19.3.1",
     "react-dom": "19.3.1",
     "swagger-ui-react": "5.35.1"

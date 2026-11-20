@@ -12,17 +12,17 @@ importers:
         specifier: ^0.1.0
         version: 0.1.0
       axios:
-        specifier: ^1.13.2
+        specifier: ^1.21.1
         version: 1.21.1
       axios-cache-interceptor:
-        specifier: ^1.8.3
+        specifier: ^1.13.0
         version: 1.13.0(axios@1.21.1)
       cheerio:
-        specifier: ^1.0.0-rc.11
+        specifier: ^1.2.0
         version: 1.2.0
       ics:
-        specifier: ^2.35.0
-        version: 2.44.0
+        specifier: ^3.12.1
+        version: 3.12.1
       next:
         specifier: 16.4.6
         version: 16.4.6(@babel/core@7.29.13)(@types/node@26.6.6)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
@@ -30,8 +30,8 @@ importers:
         specifier: 0.5.0
         version: 0.5.0(next@16.4.6(@babel/core@7.29.13)(@types/node@26.6.6)(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(openapi-types@12.1.3)
       node-ical:
-        specifier: ^0.15.1
-        version: 0.15.3
+        specifier: ^0.27.6
+        version: 0.27.6
       react:
         specifier: 19.3.1
         version: 19.3.1
@@ -803,9 +803,6 @@ packages:
   '@types/json5@0.0.29':
     resolution: {integrity: sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==, tarball: https://registry.npmjs.org/@types/json5/-/json5-0.0.29.tgz}
 
-  '@types/lodash@4.17.27':
-    resolution: {integrity: sha512-VenMRv/eKNrspX9v3H4dbmjsrnCOYdYBG3kxXKk3dG6X+urBGcj2Prww3xw1U5K4FV/mE4h5GbWd0szEKf+9ew==, tarball: https://registry.npmjs.org/@types/lodash/-/lodash-4.17.27.tgz}
-
   '@types/node@26.6.6':
     resolution: {integrity: sha512-MzQj+8Kx3XI40OmUAE6Qoh58ZMNstNNMwn2nfd3qWsfe7nDNSqJNzes4njhz6AHwrSHOffSLwXU6yb474Q4aog==, tarball: https://registry.npmjs.org/@types/node/-/node-26.6.6.tgz}
 
@@ -1133,9 +1130,6 @@ packages:
     engines: {node: '>=12'}
     peerDependencies:
       axios: ^1.19.0
-
-  axios@1.1.3:
-    resolution: {integrity: sha512-00tXVRwKx/FZr/IDVFt4C+f9FYairX517WoGCL6dpOntqLkZofjhu43F/Xl44UOpqa+9sLFDrG/XAnFsUYgkDA==, tarball: https://registry.npmjs.org/axios/-/axios-1.1.3.tgz}
 
   axios@1.21.1:
     resolution: {integrity: sha512-6eI5Q/Y4u/Um9dDlsRoq5pY2rxnUTv+L4PpLitnbk/i4jb3MxLZ5CsN5Ih3IysbeRYK4pR+P7qfMsOQl9fwwFQ==, tarball: https://registry.npmjs.org/axios/-/axios-1.21.1.tgz}
@@ -1767,8 +1761,8 @@ packages:
     resolution: {integrity: sha512-4fCk79wshMdzMp2rH06qWrJE4iolqLhCUH+OiuIgU++RB0+94NlDL81atO7GX55uUKueo0txHNtvEyI6D7WdMw==, tarball: https://registry.npmjs.org/iconv-lite/-/iconv-lite-0.6.3.tgz}
     engines: {node: '>=0.10.0'}
 
-  ics@2.44.0:
-    resolution: {integrity: sha512-JeiPjNeWkd7Qri/wfHqjZCtglVwRJRqy1MEFKn9QzatzxUyCOsx4YARPlLkU8UnPxpg4VtEjR+VRUG+Cvj6bDg==, tarball: https://registry.npmjs.org/ics/-/ics-2.44.0.tgz}
+  ics@3.12.1:
+    resolution: {integrity: sha512-Ju0prGo1DoVNEqHnNQqlSnWZBxoqjZ4wIlNxfzNsEnCXP3IEPRKsERVyoZpQeFej6EN8BvMgfHRuzc2fqnGf2A==, tarball: https://registry.npmjs.org/ics/-/ics-3.12.1.tgz}
 
   ieee754@1.2.1:
     resolution: {integrity: sha512-dcyqhDvX1C46lXZcVqCpK+FtMRQVdIMN6/Df5js2zouUsqG7I6sFxitIC+7KYK29KdXOLHdu9zL4sFnoVQnqaA==, tarball: https://registry.npmjs.org/ieee754/-/ieee754-1.2.1.tgz}
@@ -2064,9 +2058,6 @@ packages:
     resolution: {integrity: sha512-iPZK6eYjbxRu3uB4/WZ3EsEIMJFMqAoopl3R+zuq0UjcAm/MO6KCweDgPfP3elTztoKP3KtnVHxTn2NHBSDVUw==, tarball: https://registry.npmjs.org/locate-path/-/locate-path-6.0.0.tgz}
     engines: {node: '>=10'}
 
-  lodash-es@4.18.1:
-    resolution: {integrity: sha512-J8xewKD/Gk22OZbhpOVSwcs60zhd95ESDwezOFuA3/099925PdHJ7OFHNTGtajL3AlZkykD32HykiMo+BIBI8A==, tarball: https://registry.npmjs.org/lodash-es/-/lodash-es-4.18.1.tgz}
-
   lodash.debounce@4.0.8:
     resolution: {integrity: sha512-FT1yDzDYEoYWhnSGnpE/4Kj1fLZkDFyqRb7fNt6FdYOSxlUWAtp42Eh6Wb0rGIv/m9Bgo7x4GhQbm5Ys4SG5ow==, tarball: https://registry.npmjs.org/lodash.debounce/-/lodash.debounce-4.0.8.tgz}
 
@@ -2089,9 +2080,6 @@ packages:
 
   lru-cache@5.1.1:
     resolution: {integrity: sha512-KpNARQA3Iwv+jTA0utUVVbrh+Jlrr1Fv0e56GGzAFOXN7dk/FviaDW8LHmK52DlcH4WP2n6gI8vN1aesBFgo9w==, tarball: https://registry.npmjs.org/lru-cache/-/lru-cache-5.1.1.tgz}
-
-  luxon@1.28.1:
-    resolution: {integrity: sha512-gYHAa180mKrNIUJCbwpmD0aTu9kV0dREDrwNnuyFAsO1Wt0EVYSZelPnJlbj9HplzXX/YWXHFTL45kvZ53M0pw==, tarball: https://registry.npmjs.org/luxon/-/luxon-1.28.1.tgz}
 
   magic-string@1.4.5:
     resolution: {integrity: sha512-oLLC2+YvQUfAa+vxoufE/yc1icb87M9iXIRqAoR/2EhE/8cb3SF/+Gi0c2By1B+5Vz2e2vQtUvHiu1+63Znh+w==, tarball: https://registry.npmjs.org/magic-string/-/magic-string-1.4.5.tgz}
@@ -2138,17 +2126,8 @@ packages:
     resolution: {integrity: sha512-tEBHqDnIoM/1rXME1zgka9g6Q2lcoCkxHLuc7ODJ5BxbP5d4c2Z5cGgtXAku59200Cx7diuHTOYfSBD8n6mm8A==, tarball: https://registry.npmjs.org/minipass/-/minipass-7.1.3.tgz}
     engines: {node: '>=16 || 14 >=14.17'}
 
-  moment-timezone@0.5.48:
-    resolution: {integrity: sha512-f22b8LV1gbTO2ms2j2z13MuPogNoh5UzxL3nzNAYKGraILnbGc9NEE6dyiiiLv46DGRb8A4kg8UKWLjPthxBHw==, tarball: https://registry.npmjs.org/moment-timezone/-/moment-timezone-0.5.48.tgz}
-
-  moment@2.31.0:
-    resolution: {integrity: sha512-0acOTfMiWOheYS4eoWb80yYMb/JLvVv9SHbs2PehaDzfUG0Bw855SKyk0IKTnPGa5+U2bmi3W68l1+sGLX/pvw==, tarball: https://registry.npmjs.org/moment/-/moment-2.31.0.tgz}
-
   ms@2.1.3:
     resolution: {integrity: sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==, tarball: https://registry.npmjs.org/ms/-/ms-2.1.3.tgz}
-
-  nanoclone@0.2.1:
-    resolution: {integrity: sha512-wynEP02LmIbLpcYw8uBKpcfF6dmg2vcpKqxeH5UcoKEYdExslsdUA4ugFauuaeYdTB76ez6gJW8XAZ6CgkXYxA==, tarball: https://registry.npmjs.org/nanoclone/-/nanoclone-0.2.1.tgz}
 
   nanoid@3.3.20:
     resolution: {integrity: sha512-uKdg2G3GNCKQn9byYOpxbGqrT2fGO5KRt5J/8b3pok8rT6qxGWF6hxMyJiEYtAf+FVyYuD9hRaDqX5uPFYJ4ZQ==, tarball: https://registry.npmjs.org/nanoid/-/nanoid-3.3.20.tgz}
@@ -2211,8 +2190,9 @@ packages:
     resolution: {integrity: sha512-LA4ZjwlnUblHVgq0oBF3Jl/6h/Nvs5fzBLwdEF4nuxnFdsfajde4WfxtJr3CaiH+F6ewcIB/q4jQ4UzPyid+CQ==, tarball: https://registry.npmjs.org/node-gyp-build/-/node-gyp-build-4.8.4.tgz}
     hasBin: true
 
-  node-ical@0.15.3:
-    resolution: {integrity: sha512-OQ3xipexD/nI0jpoz+ELhMwV8liMMqM+rlxB5xHbPiJRYvueIT+4cipjdt4L64teXXHVmg+xf8OfwJE2LueVlw==, tarball: https://registry.npmjs.org/node-ical/-/node-ical-0.15.3.tgz}
+  node-ical@0.27.6:
+    resolution: {integrity: sha512-wtZkvE2Hbldw8tqu07a5INybNlP4TbjCLRjxse6FKmMpuhq9V9vNNFCJZ8SlU2rJ98uSGQ+pIdtqvECzPqb5Nw==, tarball: https://registry.npmjs.org/node-ical/-/node-ical-0.27.6.tgz}
+    engines: {node: '>=22'}
 
   node-releases@2.0.65:
     resolution: {integrity: sha512-PfvofsGQ+MiOQIPkX9fU8ELUWmy5zL74CdQaph/ismKszfFkfwXaw0cGiwbwym2hT9k5+mdyl8O5WQ1MD8EHmA==, tarball: https://registry.npmjs.org/node-releases/-/node-releases-2.0.65.tgz}
@@ -2356,9 +2336,6 @@ packages:
 
   property-information@7.2.0:
     resolution: {integrity: sha512-IAtzIB6sUiWaJYrX9smp3V46pBGbBeLFRGdh25kg1334VcBlD8HzhPeNIWQH9zhGmo2itIe25EHt9dQP7G5hmg==, tarball: https://registry.npmjs.org/property-information/-/property-information-7.2.0.tgz}
-
-  proxy-from-env@1.1.0:
-    resolution: {integrity: sha512-D+zkORCbA9f1tdWRK0RaCR3GPv50cMxcrz4X8k5LTSUD1Dkw47mKJEZQNunItRTkWwgtaUSo1RVFRIG9ZXiFYg==, tarball: https://registry.npmjs.org/proxy-from-env/-/proxy-from-env-1.1.0.tgz}
 
   proxy-from-env@2.1.0:
     resolution: {integrity: sha512-cJ+oHTW1VAEa8cJslgmUZrc+sjRKgAKl3Zyse6+PV38hZe/V6Z14TbCuXcan9F9ghlz4QrFr2c92TNF82UkYHA==, tarball: https://registry.npmjs.org/proxy-from-env/-/proxy-from-env-2.1.0.tgz}
@@ -2505,11 +2482,14 @@ packages:
     engines: {node: ^20.19.0 || >=22.12.0}
     hasBin: true
 
-  rrule@2.6.4:
-    resolution: {integrity: sha512-sLdnh4lmjUqq8liFiOUXD5kWp/FcnbDLPwq5YAc/RrN6120XOPb86Ae5zxF7ttBVq8O3LxjjORMEit1baluahA==, tarball: https://registry.npmjs.org/rrule/-/rrule-2.6.4.tgz}
+  rrule-temporal@2.3.0:
+    resolution: {integrity: sha512-5V5n6ZtD/0eRbMdOeiOqJ3GlIEy/qSWVq0d0zxjgZoD1HcujPT1TMeklwxsPokBnHdxTSlfgWYf7lefrwNKlaA==, tarball: https://registry.npmjs.org/rrule-temporal/-/rrule-temporal-2.3.0.tgz}
 
   run-parallel@1.2.0:
     resolution: {integrity: sha512-5l4VyZR86LZ/lDxZTR6jqL8AFE2S0IFLMP26AbjsLVADxHdhB/c0GUsH+y39UfCi3dzz8OlQuPmnaJOMoDHQBA==, tarball: https://registry.npmjs.org/run-parallel/-/run-parallel-1.2.0.tgz}
+
+  runes2@1.1.10:
+    resolution: {integrity: sha512-4Y1en7X+3i0pf9NDPMEerT1CkZlExpQJPnEPlrBXzXSIHO3etyZR6Wbpl+hHWVYRFnhPVCyPHaJks6GcCFgEiA==, tarball: https://registry.npmjs.org/runes2/-/runes2-1.1.10.tgz}
 
   safe-array-concat@1.1.4:
     resolution: {integrity: sha512-wtZlHyOje6OZTGqAoaDKxFkgRtkF9CnHAVnCHKfuj200wAgL+bSJhdsCD2l0Qx/2ekEXjPWcyKkfGb5CPboslg==, tarball: https://registry.npmjs.org/safe-array-concat/-/safe-array-concat-1.1.4.tgz}
@@ -2682,8 +2662,20 @@ packages:
       react: '>=16.8.0 <20'
       react-dom: '>=16.8.0 <20'
 
+  temporal-polyfill@1.0.8:
+    resolution: {integrity: sha512-RCCGa0GddT099XG49ijdD0tDf86L8vfuZun1+JyJiO4Y2NP9PACQsG0OnvNPXwVLisdvhr/zqL2nhKQmXXx08A==, tarball: https://registry.npmjs.org/temporal-polyfill/-/temporal-polyfill-1.0.8.tgz}
+
+  temporal-spec@1.0.1:
+    resolution: {integrity: sha512-wxVoanmDeavXie1vu2JaQ3WIc3JZnWAOYFBsJyATaVsXsycKYUflGsyBmrRSnoCpZJpwPyr38VpgSUlQ8CbFxg==, tarball: https://registry.npmjs.org/temporal-spec/-/temporal-spec-1.0.1.tgz}
+
+  temporal-utils@1.0.4:
+    resolution: {integrity: sha512-4mAcgbWlaxe+gn23gk8g0iHxCVGVOhKzSCfF5HM3lfvH8BdT+/pBmH/R/E4CrIse+koUgs8ThkPzCLnui6Fi8w==, tarball: https://registry.npmjs.org/temporal-utils/-/temporal-utils-1.0.4.tgz}
+
   terminal-columns@1.4.1:
     resolution: {integrity: sha512-IKVL/itiMy947XWVv4IHV7a0KQXvKjj4ptbi7Ew9MPMcOLzkiQeyx3Gyvh62hKrfJ0RZc4M1nbhzjNM39Kyujw==, tarball: https://registry.npmjs.org/terminal-columns/-/terminal-columns-1.4.1.tgz}
+
+  tiny-case@1.0.3:
+    resolution: {integrity: sha512-Eet/eeMhkO6TX8mnUteS9zgPbUMQa4I6Kkp5ORiBD5476/m+PIRiumP5tmh5ioJpH7k51Kehawy2UDfsnxxY8Q==, tarball: https://registry.npmjs.org/tiny-case/-/tiny-case-1.0.3.tgz}
 
   tinybench@6.2.4:
     resolution: {integrity: sha512-SQ52jEncXxbMCzJuY2A/jGIbbAu6NYsBWW7grz2pNE+EnzQdoGaoBfpk4qC/opE7qiUcGmGgaGIz5EoHdS1O9w==, tarball: https://registry.npmjs.org/tinybench/-/tinybench-6.2.4.tgz}
@@ -2747,9 +2739,6 @@ packages:
   tsconfig-paths@3.15.0:
     resolution: {integrity: sha512-2Ac2RgzDe/cn48GvOe3M+o82pEFewD3UPbyoUHHdKasHwJKjds4fLXWf/Ux5kATBKN20oaFGu+jbElp1pos0mg==, tarball: https://registry.npmjs.org/tsconfig-paths/-/tsconfig-paths-3.15.0.tgz}
 
-  tslib@1.14.1:
-    resolution: {integrity: sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==, tarball: https://registry.npmjs.org/tslib/-/tslib-1.14.1.tgz}
-
   tslib@2.9.1:
     resolution: {integrity: sha512-a4Ux9VKuIMHsOS7ENbEq6hK2ZGYIT27Rtl0E4eD9KqwxhKiQeMZE/9xb3IdYwWaSOyIBQLExhQgXDTYoiCxnWA==, tarball: https://registry.npmjs.org/tslib/-/tslib-2.9.1.tgz}
 
@@ -2760,6 +2749,10 @@ packages:
   type-fest@0.20.2:
     resolution: {integrity: sha512-Ne+eE4r0/iWnpAxD852z3A+N0Bt5RN//NjJwRd2VFHEmrywxf5vsZlh4R6lixl6B+wz/8d+maTSAkN1FIkI3LQ==, tarball: https://registry.npmjs.org/type-fest/-/type-fest-0.20.2.tgz}
     engines: {node: '>=10'}
+
+  type-fest@2.19.0:
+    resolution: {integrity: sha512-RAH822pAdBgcNMAfWnCBU3CFZcfZ/i1eZjwFU/dsLKumyuuP3niueg2UAukXYF0E2AAoc82ZSSf9J0WQBinzHA==, tarball: https://registry.npmjs.org/type-fest/-/type-fest-2.19.0.tgz}
+    engines: {node: '>=12.20'}
 
   type-flag@3.0.0:
     resolution: {integrity: sha512-3YaYwMseXCAhBB14RXW5cRQfJQlEknS6i4C8fCfeUdS3ihG9EdccdR9kt3vP73ZdeTGmPb4bZtkDn5XMIn1DLA==, tarball: https://registry.npmjs.org/type-flag/-/type-flag-3.0.0.tgz}
@@ -2837,11 +2830,6 @@ packages:
     resolution: {integrity: sha512-6L+EeigHMQhdaIPNIFUKwfWJSwWFQ8gJbJ2DLOs5sDIegTwR9fRxvnM3uciHKjIZhFz+KAv2emhWMRvDmMcY8A==, tarball: https://registry.npmjs.org/use-sync-external-store/-/use-sync-external-store-1.7.0.tgz}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
-
-  uuid@9.0.1:
-    resolution: {integrity: sha512-b+1eJOlsR9K8HJpow9Ok3fiWOWSIcIzXodvv0rQjVoOVNpWMpxf1wZNpt4y9h10odCNrqnYp1OBzRktckBe3sA==, tarball: https://registry.npmjs.org/uuid/-/uuid-9.0.1.tgz}
-    deprecated: uuid@10 and below is no longer supported.  For ESM codebases, update to uuid@latest.  For CommonJS codebases, use uuid@11 (but be aware this version will likely be deprecated in 2028).
-    hasBin: true
 
   vite@8.3.8:
     resolution: {integrity: sha512-LzOn3h9rG/0vhLdXrV4yJ4QFA9eEoqCl+Yx+kGJd7aB9w6nfNgVHKSYwLPZUHrz4ZGa+t+kXjV9itvcHDLQouA==, tarball: https://registry.npmjs.org/vite/-/vite-8.3.8.tgz}
@@ -2986,9 +2974,8 @@ packages:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==, tarball: https://registry.npmjs.org/yocto-queue/-/yocto-queue-0.1.0.tgz}
     engines: {node: '>=10'}
 
-  yup@0.32.11:
-    resolution: {integrity: sha512-Z2Fe1bn+eLstG8DRR6FTavGD+MeAwyfmouhHsIUgaADz8jvFKbO/fXc2trJKZg+5EBjh4gGm3iU/t3onKlXHIg==, tarball: https://registry.npmjs.org/yup/-/yup-0.32.11.tgz}
-    engines: {node: '>=10'}
+  yup@1.7.1:
+    resolution: {integrity: sha512-GKHFX2nXul2/4Dtfxhozv701jLQHdf6J34YDh2cEkpqoo8le5Mg6/LrdseVLrFarmFygZTlfIhHx/QKfb/QWXw==, tarball: https://registry.npmjs.org/yup/-/yup-1.7.1.tgz}
 
   zenscroll@4.0.2:
     resolution: {integrity: sha512-jEA1znR7b4C/NnaycInCU6h/d15ZzCd1jmsruqOKnZP6WXQSMH3W2GL+OXbkruslU4h+Tzuos0HdswzRUk/Vgg==, tarball: https://registry.npmjs.org/zenscroll/-/zenscroll-4.0.2.tgz}
@@ -4008,8 +3995,6 @@ snapshots:
 
   '@types/json5@0.0.29': {}
 
-  '@types/lodash@4.17.27': {}
-
   '@types/node@26.6.6':
     dependencies:
       undici-types: 8.9.0
@@ -4343,14 +4328,6 @@ snapshots:
       http-vary: 1.0.3
       object-code: 2.0.0
       try: 1.0.3
-
-  axios@1.1.3:
-    dependencies:
-      follow-redirects: 1.16.3
-      form-data: 4.0.6
-      proxy-from-env: 1.1.0
-    transitivePeerDependencies:
-      - debug
 
   axios@1.21.1:
     dependencies:
@@ -5160,10 +5137,11 @@ snapshots:
     dependencies:
       safer-buffer: 2.1.2
 
-  ics@2.44.0:
+  ics@3.12.1:
     dependencies:
       nanoid: 3.3.20
-      yup: 0.32.11
+      runes2: 1.1.10
+      yup: 1.7.1
 
   ieee754@1.2.1: {}
 
@@ -5430,8 +5408,6 @@ snapshots:
     dependencies:
       p-locate: 5.0.0
 
-  lodash-es@4.18.1: {}
-
   lodash.debounce@4.0.8: {}
 
   lodash.mergewith@4.6.2: {}
@@ -5452,9 +5428,6 @@ snapshots:
   lru-cache@5.1.1:
     dependencies:
       yallist: 3.1.1
-
-  luxon@1.28.1:
-    optional: true
 
   magic-string@1.4.5:
     dependencies:
@@ -5496,15 +5469,7 @@ snapshots:
 
   minipass@7.1.3: {}
 
-  moment-timezone@0.5.48:
-    dependencies:
-      moment: 2.31.0
-
-  moment@2.31.0: {}
-
   ms@2.1.3: {}
-
-  nanoclone@0.2.1: {}
 
   nanoid@3.3.20: {}
 
@@ -5565,14 +5530,10 @@ snapshots:
   node-gyp-build@4.8.4:
     optional: true
 
-  node-ical@0.15.3:
+  node-ical@0.27.6:
     dependencies:
-      axios: 1.1.3
-      moment-timezone: 0.5.48
-      rrule: 2.6.4
-      uuid: 9.0.1
-    transitivePeerDependencies:
-      - debug
+      rrule-temporal: 2.3.0
+      temporal-polyfill: 1.0.8
 
   node-releases@2.0.65: {}
 
@@ -5729,8 +5690,6 @@ snapshots:
   property-expr@2.0.6: {}
 
   property-information@7.2.0: {}
-
-  proxy-from-env@1.1.0: {}
 
   proxy-from-env@2.1.0: {}
 
@@ -5893,15 +5852,15 @@ snapshots:
       '@rolldown/binding-win32-arm64-msvc': 1.2.19
       '@rolldown/binding-win32-x64-msvc': 1.2.19
 
-  rrule@2.6.4:
+  rrule-temporal@2.3.0:
     dependencies:
-      tslib: 1.14.1
-    optionalDependencies:
-      luxon: 1.28.1
+      temporal-spec: 1.0.1
 
   run-parallel@1.2.0:
     dependencies:
       queue-microtask: 1.2.3
+
+  runes2@1.1.10: {}
 
   safe-array-concat@1.1.4:
     dependencies:
@@ -6216,7 +6175,18 @@ snapshots:
       - debug
       - supports-color
 
+  temporal-polyfill@1.0.8:
+    dependencies:
+      temporal-spec: 1.0.1
+      temporal-utils: 1.0.4
+
+  temporal-spec@1.0.1: {}
+
+  temporal-utils@1.0.4: {}
+
   terminal-columns@1.4.1: {}
+
+  tiny-case@1.0.3: {}
 
   tinybench@6.2.4: {}
 
@@ -6280,8 +6250,6 @@ snapshots:
       minimist: 1.2.8
       strip-bom: 3.0.0
 
-  tslib@1.14.1: {}
-
   tslib@2.9.1: {}
 
   type-check@0.4.0:
@@ -6289,6 +6257,8 @@ snapshots:
       prelude-ls: 1.2.1
 
   type-fest@0.20.2: {}
+
+  type-fest@2.19.0: {}
 
   type-flag@3.0.0: {}
 
@@ -6405,8 +6375,6 @@ snapshots:
     dependencies:
       react: 19.3.1
 
-  uuid@9.0.1: {}
-
   vite@8.3.8(@types/node@26.6.6):
     dependencies:
       lightningcss: 1.33.0
@@ -6509,15 +6477,12 @@ snapshots:
 
   yocto-queue@0.1.0: {}
 
-  yup@0.32.11:
+  yup@1.7.1:
     dependencies:
-      '@babel/runtime': 7.29.15
-      '@types/lodash': 4.17.27
-      lodash: 4.18.1
-      lodash-es: 4.18.1
-      nanoclone: 0.2.1
       property-expr: 2.0.6
+      tiny-case: 1.0.3
       toposort: 2.0.2
+      type-fest: 2.19.0
 
   zenscroll@4.0.2: {}
 
